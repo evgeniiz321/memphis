@@ -134,6 +134,7 @@ func (b *Billy) Rename(oldpath, newpath string) error {
 	if f, ok := oldParent.files[oldName]; ok {
 		// move file.
 		newParent.files[newName] = f
+		newParent.files[newName].name = newName
 		delete(oldParent.files, oldName)
 		return nil
 	} else if d, ok := oldParent.directories[oldName]; ok {
