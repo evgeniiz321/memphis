@@ -1,4 +1,4 @@
-module github.com/willscott/memphis
+module github.com/evgeniiz321/memphis
 
 go 1.14
 
