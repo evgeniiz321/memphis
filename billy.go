@@ -81,7 +81,7 @@ func (b *Billy) OpenFile(filename string, flag int, perm os.FileMode) (billy.Fil
 
 // Stat returns file metadata
 func (b *Billy) Stat(filename string) (os.FileInfo, error) {
-	return b.getFileInfo(filename, true)
+	return b.getFileInfo(filename, false)
 }
 
 // Lstat provides symlink info
@@ -246,7 +246,7 @@ func (b *Billy) Readlink(link string) (string, error) {
 
 // Chmod changes file permissions
 func (b *Billy) Chmod(name string, mode os.FileMode) error {
-	f, err := b.getFileInfo(name, true)
+	f, err := b.getFileInfo(name, false)
 	if err != nil {
 		return err
 	}
@@ -300,7 +300,7 @@ func (b *Billy) changeOwnership(name string, uid, gid int, followLinks bool) err
 
 // Chtimes changes file access time
 func (b *Billy) Chtimes(name string, atime time.Time, mtime time.Time) error {
-	f, err := b.getFileInfo(name, true)
+	f, err := b.getFileInfo(name, false)
 	if err != nil {
 		return err
 	}
